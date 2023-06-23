@@ -34,4 +34,10 @@ const addReview = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { addReview, getMyRestaurant, getSingleRestaurant };
+const getAdmin = asyncHandler(async (req, res) => {
+  const {id}=req.body
+  const review = await Review.find({restaurant:id});
+  res.json(review);
+});
+
+module.exports = { addReview, getMyRestaurant, getSingleRestaurant,getAdmin };
